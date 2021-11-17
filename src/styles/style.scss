@@ -1,0 +1,39 @@
+body{
+    overflow:clip;
+    height: 100vh;
+    width:100vw;
+}
+
+.home {
+    background-color: #eee9e9;
+    overflow-x:clip;
+    overflow-y:clip;
+    height: 100vh;
+    width:100vw;
+    .top-left-card {
+        position: absolute;
+        width: 558px;
+        height: 300px;
+        left: -20vh;
+        top: -4vw;
+
+        background: #ffcaca;
+        border-radius: 20px;
+        transform: rotate(-35deg);
+        text-align: end;
+        z-index: 1;
+    }
+
+    .bottom-right-card {
+        position: absolute;
+        width: 578.4px;
+        height: 428.9px;
+        right: -10vw;
+        top: 70vh;
+
+        background: #dfea5f;
+        border-radius: 20px;
+        transform: rotate(-35deg);
+        z-index: 1;
+    }
+}
