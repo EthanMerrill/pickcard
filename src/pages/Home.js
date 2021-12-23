@@ -6,8 +6,8 @@ import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL
 const supabaseKey = process.env.REACT_APP_SUPABASE_ANON_KEY
-console.log(supabaseKey, supabaseUrl)
-// const supabase = createClient(supabaseUrl, supabaseKey)
+const supabase = createClient(supabaseUrl, supabaseKey)
+
 
 
 const Home = (props) => {
@@ -22,6 +22,22 @@ const Home = (props) => {
     useEffect(()=> {
         console.log(emailText)
     },[emailText])
+
+
+    // Functions
+var saveEmail = async (email) => {
+
+    // Insert a row
+    const { data, error } = await supabase
+        .from('email_list')
+        .insert([
+            { email: email }
+        ])
+
+    // Did it work?
+    console.log(data, error);
+
+}
 
     // JSX return
     return (
@@ -45,9 +61,9 @@ const Home = (props) => {
                 <div className="center-content">
                     <h2>Get the Perfect Card for How You Spend</h2>
                     <button className="import-transactions-btn deactivated"> Import Transactions</button>
-                    <h3>Receive an email when we launch</h3>
-                    <input onChange={e => setEmailText(e.target.value)} type="text" placeholder="Search for a card..." />
-                    <button>Join the List</button>
+                    <h3>Receive an email when we launch 🚀</h3>
+                    <input onChange={e => setEmailText(e.target.value)} type="text" placeholder=" enter your email" />
+                    <button className="button" onClick={e=>saveEmail(emailText)}>Join the List</button>
                 </div>
 
                 <div className='how-it-works-container'>
