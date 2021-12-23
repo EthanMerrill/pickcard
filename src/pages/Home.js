@@ -1,23 +1,31 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCreditCard, faLink, faChartBar } from "@fortawesome/free-solid-svg-icons";
+import {useState, useEffect} from 'react'
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL
+const supabaseKey = process.env.REACT_APP_SUPABASE_ANON_KEY
+console.log(supabaseKey, supabaseUrl)
+// const supabase = createClient(supabaseUrl, supabaseKey)
+
 
 const Home = (props) => {
     // destructure props
     // const {propName} = props
 
     // State Variables
-    // const [variableName, setVariableName] = useState(null)
+    const [emailText, setEmailText] = useState(null)
 
     //Use Effects
-    //useEffect desc
-    // useEffect(()=> {
-
-    // },[])
+    // set the email textbox
+    useEffect(()=> {
+        console.log(emailText)
+    },[emailText])
 
     // JSX return
     return (
-        <body className='home'>
+        <div className='home'>
             <nav>
                 <ul>
                     <li>About</li>
@@ -38,7 +46,7 @@ const Home = (props) => {
                     <h2>Get the Perfect Card for How You Spend</h2>
                     <button className="import-transactions-btn deactivated"> Import Transactions</button>
                     <h3>Receive an email when we launch</h3>
-                    <input type="text" placeholder="Search for a card..." />
+                    <input onChange={e => setEmailText(e.target.value)} type="text" placeholder="Search for a card..." />
                     <button>Join the List</button>
                 </div>
 
@@ -72,7 +80,7 @@ const Home = (props) => {
                 </div>
 
             </div>
-        </body>
+        </div>
     )
 
 }
